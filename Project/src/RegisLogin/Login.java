@@ -1,56 +1,46 @@
 package RegisLogin;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
- * import this class if you to use in Main class
- * Login class will check wheter that user have account or not
- * if not user will need to input 'y' to create new account
+ * This class will ask you to input email and password to login
+ * if invaild or don't have ID
+ * will ask user to press 1 if want to register
+ * if not program ended
  */
 public class Login {
     Scanner scanner = new Scanner(System.in);
-    private static ArrayList<Member> members = new ArrayList<>();
 
-    public void loginAt(String email, String password) {
+    public Login() {
         System.out.println("\nPlease enter your email:");
-        email = scanner.nextLine();
+        String email = scanner.nextLine();
 
         System.out.println("Please enter your password:");
-        password = scanner.nextLine();
+        String password = scanner.nextLine();
 
-        Member member = Member.getMember(email, password, members);
+        loginAt(email, password);
+    }
+
+    public void loginAt(String email, String password) {
+
+        Member member = Member.getMember(email, password);
 
         // Don't have an account
         if (member == null) {
-            System.out.println("Invalid email or password. Register enter 'y' ");
-            String y = scanner.nextLine();
+            System.out.println("Invalid email or password. Register enter '1' ");
+            int y = scanner.nextInt();
 
-            if (y.equals('y')) {
+            if (y == 1) {
                 // User create new acount
                 Register newUser = new Register();
 
-                System.out.println("\nPlease enter your name:");
-                String name = scanner.nextLine();
-
-                System.out.println("Please enter your email:");
-                email = scanner.nextLine();
-
-                System.out.println("Please enter your password:");
-                password = scanner.nextLine();
-
-                System.out.println("Please enter your password:");
-                String telNum = scanner.nextLine();
-
-                newUser.registerAt(name, email, password, telNum, members);
-                // Successful create new account
-                System.out.println("\nSuccessfully create new account!");
             }
 
         } else {
             // Successful login
             System.out.println("\nWelcome, " + member.getName() + "!");
-            System.out.println("Your membership rank is: " + member);
+            System.out.print("Your membership rank is: ");
+            member.getRank();
         }
     }
 }
