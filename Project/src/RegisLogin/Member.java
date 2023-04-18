@@ -16,7 +16,7 @@ class Member {
 
     private static ArrayList<Member> members = new ArrayList<>();
     // Create sample set of members
-    {
+    static {
         members.add(new Member("John Doe", "john.doe@example.com", "password123", "123"));
         members.add(new Member("Jane Smith", "jane.smith@example.com", "password456", "456"));
         members.add(new Member("Bob Johnson", "bob.johnson@example.com", "password789", "789"));
