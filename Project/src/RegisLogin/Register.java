@@ -26,6 +26,8 @@ public class Register {
         registerAt(name, email, password, telNum);
         // Successful create new account
         System.out.println("\nSuccessfully create new account!");
+        //go to Login again
+        new Login();
     }
 
     public void registerAt(String name, String email, String password, String telNum) {
@@ -33,7 +35,7 @@ public class Register {
         Member.checkMember(email);
 
         // Create new account
-        Member.add(new Member(name, email, password, telNum));
+        Member.add(new Member(name, email, password, telNum, null));
         System.out.println("Member with email " + email + " has been added.");
 
     }

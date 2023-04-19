@@ -14,7 +14,7 @@ public class Login {
     public Login() {
         System.out.println("\nPlease enter your email:");
         String email = scanner.nextLine();
-        
+
         System.out.println("Please enter your password:");
         String password = scanner.nextLine();
 
@@ -38,20 +38,10 @@ public class Login {
 
         } else {
             // Successful login
-            /*
-             * if (member.isAdmin()) {
-             * // Redirect to admin dashboard
-             * System.out.println("\nWelcome, " + member.getName() + "!");
-             * System.out.println("You have admin privileges.");
-             * // code to redirect to admin dashboard
-             * } else {
-             */
             // Redirect to regular user dashboard
             System.out.println("\nWelcome, " + member.getName() + "!");
-            System.out.print("Your membership rank is: ");
-            member.getRank();
+            System.out.println("Your membership rank is: " + member.getRank());
             // code to redirect to regular user dashboard
-            // }
         }
     }
 }

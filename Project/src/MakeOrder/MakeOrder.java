@@ -51,7 +51,8 @@ public class MakeOrder {
                         noodle.getMenu();
                         System.out.println("Please select the item you want.");
                         item = scanner.nextInt();
-                        if (item == 1 || item == 2 || item == 3 || item == 4 || item == 5) {
+
+                        if (item >= 1 && item <= 5) {
                             System.out.println("Quantity: ");
                             quantity = scanner.nextInt();
                         }
@@ -216,6 +217,7 @@ public class MakeOrder {
         int defaultAddress = scanner.nextInt();
         if (defaultAddress == 1) {
             // ดึงไปเก็บข้อมูลในอัลเรย์
+            
         }
 
         // ใส่เวลาส่ง
