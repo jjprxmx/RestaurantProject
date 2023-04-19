@@ -19,18 +19,7 @@ public class SushiAndMaki extends Menu {
     }
 
     public double price(int num, int quantity) {
-        totalPrice = 0;
-        if (num == 1) {
-            totalPrice = totalPrice + (395 * quantity);
-
-        } else if (num == 2) {
-            totalPrice = totalPrice + (270 * quantity);
-
-        } else if (num == 3) {
-            totalPrice = totalPrice + (360 * quantity);
-        } else if (num == 4) {
-            totalPrice = totalPrice + (120 * quantity);
-        }
-        return totalPrice;
+        int menuPrice[] = { 395, 270, 360, 120 };
+        return menuPrice[num] * quantity;
     }
 }

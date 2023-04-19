@@ -19,20 +19,7 @@ public class Rice extends Menu {
     }
 
     public double price(int num, int quantity) {
-        totalPrice = 0;
-        if (num == 1) {
-            totalPrice = totalPrice + (220 * quantity);
-
-        } else if (num == 2) {
-            totalPrice = totalPrice + (180 * quantity);
-
-        } else if (num == 3) {
-            totalPrice = totalPrice + (240 * quantity);
-
-        } else if (num == 4) {
-            totalPrice = totalPrice + (140 * quantity);
-
-        }
-        return totalPrice;
+        int menuPrice[] = { 220, 180, 240, 140};
+        return menuPrice[num] * quantity;
     }
 }

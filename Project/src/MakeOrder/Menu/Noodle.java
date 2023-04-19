@@ -19,24 +19,7 @@ public class Noodle extends Menu {
     }
 
     public double price(int num, int quantity) {
-        totalPrice = 0;
-
-        if (num == 1) {
-            totalPrice = totalPrice + (210 * quantity);
-
-        } else if (num == 2) {
-            totalPrice = totalPrice + (110 * quantity);
-
-        } else if (num == 3) {
-            totalPrice = totalPrice + (160 * quantity);
-
-        } else if (num == 4) {
-            totalPrice = totalPrice + (150 * quantity);
-
-        } else if (num == 5) {
-            totalPrice = totalPrice + (160 * quantity);
-
-        }
-        return totalPrice;
+        int menuPrice[] = { 210, 110, 160, 150, 160};
+        return menuPrice[num] * quantity;
     }
 }
