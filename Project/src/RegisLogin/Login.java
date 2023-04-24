@@ -10,6 +10,7 @@ import java.util.Scanner;
  */
 public class Login {
     Scanner scanner = new Scanner(System.in);
+    Member member;
 
     public Login() {
         System.out.println("\nPlease enter your email:");
@@ -23,7 +24,7 @@ public class Login {
 
     public void loginAt(String email, String password) {
 
-        Member member = Member.getMember(email, password);
+        member = Member.getMember(email, password);
 
         // Don't have an account
         if (member == null) {
@@ -43,5 +44,13 @@ public class Login {
             System.out.println("Your membership rank is: " + member.getRank());
             // code to redirect to regular user dashboard
         }
+    }
+
+    public void setDefaultAddress(String address) {
+        Member.setAddress(address);
+    }
+
+    public String getAddress() {
+        return member.getAddress();
     }
 }

@@ -9,7 +9,9 @@ import java.util.ArrayList;
 * but showMember similar to show all member list in readable form
 */
 class Member {
-    private String name, email, password, telNum, address;
+    private String name, email, password, telNum;
+
+    private static String address;
 
     LocalDate today = LocalDate.now();
     private int yearsOfMembership = today.getYear() - 2023; // assuming the program started in 2023
@@ -27,6 +29,7 @@ class Member {
         members.add(new Member("Karen Thompson", "karen.thompson@example.com", "password555", "555", null));
         members.add(new Member("Steven Miller", "steven.miller@example.com", "password666", "666", null));
         members.add(new Member("Amy Garcia", "amy.garcia@example.com", "password777", "777", null));
+        members.add(new Member("p", "p", "p", "p", null));
     }
 
     public Member(String name, String email, String password, String telNum, String address) {
@@ -61,8 +64,8 @@ class Member {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public static void setAddress(String address) {
+        Member.address = address;
     }
 
     public String getRank() {

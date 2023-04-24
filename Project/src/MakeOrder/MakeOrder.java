@@ -1,6 +1,7 @@
 package MakeOrder;
 
 import MakeOrder.Menu.*;
+import RegisLogin.Login;
 import Reservation.Time;
 
 import java.util.Scanner;
@@ -8,7 +9,7 @@ import java.util.Vector;
 
 public class MakeOrder {
 
-    public static void order() {
+    public static void order(Login user) {
         Vector<Menu> menus = new Vector<>();
         Noodle noodle = new Noodle();
         Rice rice = new Rice();
@@ -46,8 +47,8 @@ public class MakeOrder {
                 System.out.print("type: ");
                 int type = scanner.nextInt();
                 if (type == 1) {
-                    check = true;
                     do {
+                        check = true;
                         noodle.getMenu();
                         System.out.println("Please select the item you want.");
                         item = scanner.nextInt();
@@ -55,27 +56,10 @@ public class MakeOrder {
                         if (item >= 1 && item <= 5) {
                             System.out.println("Quantity: ");
                             quantity = scanner.nextInt();
-                        }
-                        if (item == 1) {
+
                             menus.add(new Noodle(noodles[item - 1], quantity));
-                            noodle.price(item, quantity);
-                            totalPrice = totalPrice + noodle.totalPrice;
-                        } else if (item == 2) {
-                            menus.add(new Noodle(noodles[item - 1], quantity));
-                            noodle.price(item, quantity);
-                            totalPrice = totalPrice + noodle.totalPrice;
-                        } else if (item == 3) {
-                            menus.add(new Noodle(noodles[item - 1], quantity));
-                            noodle.price(item, quantity);
-                            totalPrice = totalPrice + noodle.totalPrice;
-                        } else if (item == 4) {
-                            menus.add(new Noodle(noodles[item - 1], quantity));
-                            noodle.price(item, quantity);
-                            totalPrice = totalPrice + noodle.totalPrice;
-                        } else if (item == 5) {
-                            menus.add(new Noodle(noodles[item - 1], quantity));
-                            noodle.price(item, quantity);
-                            totalPrice = totalPrice + noodle.totalPrice;
+                            totalPrice = totalPrice + noodle.price(item - 1, quantity);
+
                         } else if (item == 6) {
                             check = false;
                         }
@@ -83,67 +67,37 @@ public class MakeOrder {
                     } while (check);
 
                 } else if (type == 2) {
-                    check = true;
                     do {
+                        check = true;
                         rice.getMenu();
                         System.out.println("Please select the item you want.");
                         item = scanner.nextInt();
-                        if (item == 1 || item == 2 || item == 3 || item == 4) {
+
+                        if (item >= 1 && item <= 4) {
                             System.out.println("Quantity: ");
                             quantity = scanner.nextInt();
-                        }
-                        if (item == 1) {
+
                             menus.add(new Rice(rices[item - 1], quantity));
-                            rice.price(item, quantity);
-                            totalPrice = totalPrice + rice.totalPrice;
-                        } else if (item == 2) {
-                            menus.add(new Rice(rices[item - 1], quantity));
-                            rice.price(item, quantity);
-                            totalPrice = totalPrice + rice.totalPrice;
-                        } else if (item == 3) {
-                            menus.add(new Rice(rices[item - 1], quantity));
-                            rice.price(item, quantity);
-                            totalPrice = totalPrice + rice.totalPrice;
-                        } else if (item == 4) {
-                            menus.add(new Rice(rices[item - 1], quantity));
-                            rice.price(item, quantity);
-                            totalPrice = totalPrice + rice.totalPrice;
+                            totalPrice = totalPrice + rice.price(item - 1, quantity);
+
                         } else if (item == 5) {
                             check = false;
                         }
-
                     } while (check);
 
                 } else if (type == 3) {
-                    check = true;
                     do {
+                        check = true;
                         sashimi.getMenu();
                         System.out.println("Please select the item you want.");
                         item = scanner.nextInt();
-                        if (item == 1 || item == 2 || item == 3 || item == 4 || item == 5) {
+                        if (item >= 1 && item <= 5) {
                             System.out.println("Quantity: ");
                             quantity = scanner.nextInt();
-                        }
-                        if (item == 1) {
+
                             menus.add(new Sashimi(sashimii[item - 1], quantity));
-                            sashimi.price(item, quantity);
-                            totalPrice = totalPrice + sashimi.totalPrice;
-                        } else if (item == 2) {
-                            menus.add(new Sashimi(sashimii[item - 1], quantity));
-                            sashimi.price(item, quantity);
-                            totalPrice = totalPrice + sashimi.totalPrice;
-                        } else if (item == 3) {
-                            menus.add(new Sashimi(sashimii[item - 1], quantity));
-                            sashimi.price(item, quantity);
-                            totalPrice = totalPrice + sashimi.totalPrice;
-                        } else if (item == 4) {
-                            menus.add(new Sashimi(sashimii[item - 1], quantity));
-                            sashimi.price(item, quantity);
-                            totalPrice = totalPrice + sashimi.totalPrice;
-                        } else if (item == 5) {
-                            menus.add(new Sashimi(sashimii[item - 1], quantity));
-                            sashimi.price(item, quantity);
-                            totalPrice = totalPrice + sashimi.totalPrice;
+                            totalPrice = totalPrice + sashimi.price(item - 1, quantity);
+
                         } else if (item == 6) {
                             check = false;
                         }
@@ -151,38 +105,24 @@ public class MakeOrder {
                     } while (check);
 
                 } else if (type == 4) {
-                    check = true;
                     do {
+                        check = true;
                         sushisuhi.getMenu();
                         System.out.println("Please select the item you want.");
                         item = scanner.nextInt();
-                        if (item == 1 || item == 2 || item == 3 || item == 4) {
+                        if (item >= 1 && item <= 4) {
                             System.out.println("Quantity: ");
                             quantity = scanner.nextInt();
-                        }
-                        if (item == 1) {
+
                             menus.add(new SushiAndMaki(sushi[item - 1], quantity));
-                            sushisuhi.price(item, quantity);
-                            totalPrice = totalPrice + sushisuhi.totalPrice;
-                        } else if (item == 2) {
-                            menus.add(new SushiAndMaki(sushi[item - 1], quantity));
-                            sushisuhi.price(item, quantity);
-                            totalPrice = totalPrice + sushisuhi.totalPrice;
-                        } else if (item == 3) {
-                            menus.add(new SushiAndMaki(sushi[item - 1], quantity));
-                            sushisuhi.price(item, quantity);
-                            totalPrice = totalPrice + sushisuhi.totalPrice;
-                        } else if (item == 4) {
-                            menus.add(new SushiAndMaki(sushi[item - 1], quantity));
-                            sushisuhi.price(item, quantity);
-                            totalPrice = totalPrice + sushisuhi.totalPrice;
+                            totalPrice = totalPrice + sushisuhi.price(item - 1, quantity);
+                            
                         } else if (item == 5) {
                             check = false;
                         }
 
                     } while (check);
                 }
-
                 if (type == 6) {
                     typee = false;
                 }
@@ -217,7 +157,7 @@ public class MakeOrder {
         int defaultAddress = scanner.nextInt();
         if (defaultAddress == 1) {
             // ดึงไปเก็บข้อมูลในอัลเรย์
-            
+            user.setDefaultAddress(address);
         }
 
         // ใส่เวลาส่ง

@@ -10,8 +10,10 @@ public class App {
         Login user = new Login();
 
         if (user != null) {
-            MakeOrder.order();
+            MakeOrder.order(user);
         }
+
+        user.getAddress();
 
     }
 }
