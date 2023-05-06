@@ -8,7 +8,7 @@ import java.util.ArrayList;
 * and can getMember to see the the member you looking for
 * but showMember similar to show all member list in readable form
 */
-class Member {
+public class Member {
     private String name, email, password, telNum;
 
     private static String address;

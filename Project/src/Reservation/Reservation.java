@@ -5,7 +5,7 @@ import java.util.Vector;
 
 public class Reservation {
 
-    public Reservation() {
+    public void makeReservation() {
         Time time = new Time();
         Table tablee = new Table();
         Vector<Table> tables = new Vector<>();
