@@ -12,16 +12,6 @@ public class Login {
     Scanner scanner = new Scanner(System.in);
     Member member;
 
-    public Login() {
-        System.out.println("\nPlease enter your email:");
-        String email = scanner.nextLine();
-
-        System.out.println("Please enter your password:");
-        String password = scanner.nextLine();
-
-        loginAt(email, password);
-    }
-
     public void loginAt(String email, String password) {
 
         member = Member.getMember(email, password);

@@ -13,6 +13,14 @@ public class App {
         Login user = new Login();
         Scanner scan = new Scanner(System.in);
 
+        System.out.println("\nPlease enter your email:");
+        String email = scan.nextLine();
+
+        System.out.println("Please enter your password:");
+        String password = scan.nextLine();
+
+        user.loginAt(email, password);
+
         do {
             if (user != null) {
                 System.out.println(
