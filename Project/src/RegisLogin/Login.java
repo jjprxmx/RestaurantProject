@@ -12,7 +12,7 @@ public class Login {
     Scanner scanner = new Scanner(System.in);
     Member member;
 
-    public void loginAt(String email, String password) {
+    public boolean loginAt(String email, String password) {
 
         member = Member.getMember(email, password);
 
@@ -24,15 +24,15 @@ public class Login {
             if (y == 1) {
                 // User create new account
                 Register newUser = new Register();
-
             }
-
+            return false;
         } else {
             // Successful login
             // Redirect to regular user dashboard
             System.out.println("\nWelcome, " + member.getName() + "!");
             System.out.println("Your membership rank is: " + member.getRank());
             // code to redirect to regular user dashboard
+            return true;
         }
     }
 

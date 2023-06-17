@@ -91,15 +91,15 @@ public class Member {
         return null;
     }
 
-    public static void checkMember(String email) {
+    public static boolean checkMember(String email) {
         // Check if the member already exists
         for (Member member : members) {
             if (member.getEmail().equals(email)) {
                 System.out.println("Member with email " + email + " already exists.");
-            } else {
-                System.out.println("Member with email " + email + " already exists.");
+                return true;
             }
         }
+        return false;
     }
 
     public static void add(Member member) {
