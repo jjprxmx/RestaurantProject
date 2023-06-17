@@ -3,18 +3,35 @@ package MakeOrder;
 import Admin.FeedBack;
 import MakeOrder.Menu.*;
 import RegisLogin.Login;
+import RegisLogin.Member;
 import Reservation.Time;
 
+import java.util.Calendar;
 import java.util.Scanner;
 import java.util.Vector;
 
 public class MakeOrder {
-    public static Vector<Vector<Menu>> menuAll = new Vector<Vector<Menu>>();
+    public static Vector<Vector<Menu>> mainVector = new Vector<>();
     public static Vector<Double> totalAll = new Vector<>();
+    public static Vector<String> addressVector = new Vector<>();
+    public static Vector<Integer> dayVector = new Vector<Integer>();
+    public static Vector<Integer> mountVector = new Vector<Integer>();
+    public static Vector<Integer> yearVector = new Vector<Integer>();
+    public static Vector<Integer> hourVector = new Vector<Integer>();
+    public static Vector<Integer> minuteVector = new Vector<Integer>();
+
+
 
 
     public static void order(Login user) {
+        Calendar calendar = Calendar.getInstance();
         Vector<Menu> menus = new Vector<>();
+        Vector<Integer> dayV = new Vector<>();
+        Vector<Integer> mountV = new Vector<>();
+        Vector<Integer> yearV = new Vector<>();
+
+
+
         Noodle noodle = new Noodle();
         Rice rice = new Rice();
         Sashimi sashimi = new Sashimi();
@@ -178,19 +195,46 @@ public class MakeOrder {
                 year = scanner.nextInt();
                 // ดึง method checkTime มาใช้เช็ควัน
                 time.checkDate(day, mount, year);
+                dayV.add(day);mountV.add(mount);yearV.add(year);
+                dayVector.add(day);
+                mountVector.add(mount);
+                yearVector.add(year);
+
+
+
+
             } while (time.checkDa);
         }
+        int x = calendar.get(Calendar.DAY_OF_MONTH);
+        int y = calendar.get(Calendar.MONTH) + 1;
+        int z = calendar.get(Calendar.YEAR);
+        dayVector.add(x);
+        mountVector.add(y);
+        yearVector.add(z);
+
+
+
+
         System.out.println("Want it sent immediately?? if Yes press 1,No press 2 ");
         int sentTime = scanner.nextInt();
         if (sentTime == 2) {
             do {
                 System.out.println("Please enter the time you wish to send. (hour)");
                 sentHour = scanner.nextInt();
+
                 System.out.println("Please enter the time you wish to send.(minute)");
                 sentMinute = scanner.nextInt();
                 time.checkTimeMenu(sentHour, sentMinute);
+                hourVector.add(sentHour);
+                minuteVector.add(sentMinute);
             } while (time.checkH);
         }
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        hourVector.add(hour);
+        minuteVector.add(minute);
+
+
 
         // เลือกการชำระ
         System.out.println("Please select payment method");
@@ -214,31 +258,33 @@ public class MakeOrder {
             System.out.print("feedback : ");
             FeedBack.feedback();
         }
-
-
-        menuAll.add(menus);
         totalAll.add(totalPrice);
+        mainVector.add(menus);
+        addressVector.add(address);
 
 
 
     }
-
     public static void displayMenuAndTotal() {
-        System.out.println("All Menus:");
-        for (Vector<Menu> menu : menuAll) {
-            System.out.print(menu);
-        }
-        System.out.println();
-        System.out.println("Total: " +calculateTotal()+ " Bath");
+        System.out.println("All menus");
+        int i = 0;
+        System.out.println("============================================");
+        for (Vector<Menu> menu : mainVector) {
+            System.out.println("User: ");
+            System.out.println("Address : "+addressVector.get(i));
+            System.out.println("Date : "+dayVector.get(i)+"-"+mountVector.get(i)+"-"+yearVector.get(i));
+            System.out.println("Time : "+hourVector.get(i)+":"+minuteVector.get(i));
+            System.out.println("Bill");
+            for (Menu item : menu){
+                System.out.print(item);
+            }
+            System.out.println("\nTotal: "+totalAll.get(i) +" Bath");
+            i++;
+            System.out.println("============================================");
 
-    }
-    private static double calculateTotal() {
-        double total = 0;
-        for (Double price : totalAll) {
-            total += price;
         }
-        return total;
     }
+
 
 
 
