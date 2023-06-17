@@ -1,6 +1,7 @@
 package Reservation;
 
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Table {
     private int partySize;
@@ -13,6 +14,7 @@ public class Table {
 
     public String roundTable[] = { "12.00 pm", "13.30 pm", "17.30 pm", "19.30 pm" };
     public String stRound;
+   public static Vector<Table> tables = new Vector<>();
 
     public Table() {
     };
@@ -139,6 +141,11 @@ public class Table {
         return String.format(
                 "username: preemSoCute Course:%s , Round: %s , Table: %s ,Party Size: %d , Date: %d / %d / %d ", course,
                 stRound, chooseTable, partySize, day, mount, year);
+    }
+    public static void getTable(){
+        for (Table table : tables) {
+            System.out.println(table);
+        }
     }
 
 }

@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import Admin.AdminAccess;
 
-public class App {
+public class App extends Table{
     public static void main(String args[]) throws ParseException {
 
         Login user = new Login();
@@ -47,7 +47,7 @@ public class App {
                                 } else if (admin == 2) {
 
                                 } else if (admin == 3) {
-
+                                    getTable();
                                 } else if (admin == 4) {
                                     break;
                                 } else {
@@ -67,3 +67,4 @@ public class App {
         } while (true);
     }
 }
+//ทำโชว์โต๊ะเเล้ว เหลือ โชว์ออร์เดอร์ที่สั่งจอง

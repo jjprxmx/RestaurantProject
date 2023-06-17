@@ -173,7 +173,7 @@ public class MakeOrder {
                 year = scanner.nextInt();
                 // ดึง method checkTime มาใช้เช็ควัน
                 time.checkDate(day, mount, year);
-            } while (time.check);
+            } while (time.checkDa);
         }
         System.out.println("Want it sent immediately?? if Yes press 1,No press 2 ");
         int sentTime = scanner.nextInt();
@@ -184,7 +184,7 @@ public class MakeOrder {
                 System.out.println("Please enter the time you wish to send.(minute)");
                 sentMinute = scanner.nextInt();
                 time.checkTimeMenu(sentHour, sentMinute);
-            } while (time.check);
+            } while (time.checkH);
         }
 
         // เลือกการชำระ

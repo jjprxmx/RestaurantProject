@@ -4,13 +4,14 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class Reservation {
+    public Table tablee = new Table();
+
 
     public void makeReservation() {
         Time time = new Time();
-        Table tablee = new Table();
-        Vector<Table> tables = new Vector<>();
 
-        int round;
+
+        int round=0;
         boolean chBook = true;
         double bill = 0; // บิลที่ต้องจ่าย
         int day;
@@ -46,35 +47,40 @@ public class Reservation {
                 year = scanner.nextInt();
                 // ดึง method checkTime มาใช้เช็ควัน
                 time.checkDate(day, mount, year);
-            } while (time.check);
+            } while (time.checkDa);
 
-            do {
-                System.out.println("Choose the round you want to reserve.");
-                System.out.println(
-                        "Round 1  12.00 pm\n" + "Round 2 13.30 pm\n" + "Round 3 17.30 pm\n" + "Round 4 19.30 pm");
-                round = scanner.nextInt();
-                time.checkTime(round);
-            } while (time.check);
+            if(time.checkDa==false) {
+                do {
+                    System.out.println("Choose the round you want to reserve.");
+                    System.out.println(
+                            "Round 1  12.00 pm\n" + "Round 2 13.30 pm\n" + "Round 3 17.30 pm\n" + "Round 4 19.30 pm");
+                    round = scanner.nextInt();
+                    time.checkTime(round);
+                } while (time.checkH);
+            }
+            else {System.out.println("error");}
 
-            tables.add(new Table(day, mount, year, number, round, countPeople));
+            tablee.tables.add(new Table(day, mount, year, number, round, countPeople));
 
             System.out.println("Please check your reservation");
 
-            for (Table table : tables) {
+            for (Table table : tablee.tables) {
                 System.out.println(table);
             }
 
             System.out.print("Ok press 1 ,Rebook press 2 :");
             int checkBook = scanner.nextInt();
             if (checkBook == 1) {
+
                 chBook = false;
             } else if (checkBook == 2) {
                 tablee.reTable(round);
-                tables.remove(0);
+                tablee.tables.remove(0);
             }
         } while (chBook);
 
         System.out.println("Complete Reservation.");
 
     }
+
 }
