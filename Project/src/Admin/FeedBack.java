@@ -1,7 +1,5 @@
 package Admin;
 
-import MakeOrder.Menu.Menu;
-
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -20,7 +18,7 @@ public class FeedBack {
     public static void displayfeedback(){
         int i = 1;
         for (String feedBack : feedbackVector) {
-            System.out.println(i+" "+feedBack);
+            System.out.println(i+". "+feedBack);
             i++;
         }
     }
