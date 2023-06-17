@@ -1,5 +1,6 @@
 package MakeOrder;
 
+import Admin.FeedBack;
 import MakeOrder.Menu.*;
 import RegisLogin.Login;
 import Reservation.Time;
@@ -8,6 +9,9 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class MakeOrder {
+    public static Vector<Vector<Menu>> menuAll = new Vector<Vector<Menu>>();
+    public static Vector<Double> totalAll = new Vector<>();
+
 
     public static void order(Login user) {
         Vector<Menu> menus = new Vector<>();
@@ -16,13 +20,14 @@ public class MakeOrder {
         Sashimi sashimi = new Sashimi();
         SushiAndMaki sushisuhi = new SushiAndMaki();
         Time time = new Time();
+        double totalPrice = 0;
 
         boolean checkMemu = true;
         boolean check = true;
         boolean typee = true;
         int item;
         int quantity = 1;
-        double totalPrice = 0;
+        //double totalPrice = 0;
         int day;
         int mount;
         int year;
@@ -30,7 +35,7 @@ public class MakeOrder {
         int sentMinute;
 
         String[] noodles = { "- HIYASHI SOBA 210 Bath", "- ZARU SOBA 110 Bath", "- TEMPURA SOBA 160 Bath",
-                "- PORK UDON ฿ 150 Bath", "- TEMPURA UDON  160 Bath", "  " };
+                "- PORK UDON 150 Bath", "- TEMPURA UDON  160 Bath", "  " };
         String[] rices = { "- Pork Pirikara don 220 Bath", "- Tonkatsu Kare rice 180 Bath",
                 "- Gyu Yakiniku Don 240 Bath", "- Tori Karaage Kare Rice 140 Bath" };
         String[] sashimii = { "- SASHIMI LOVER  1250 Bath", "- MINI SASHIMI 290 Bath", "- SASHIMI UME 360 Bath",
@@ -116,7 +121,7 @@ public class MakeOrder {
 
                             menus.add(new SushiAndMaki(sushi[item - 1], quantity));
                             totalPrice = totalPrice + sushisuhi.price(item - 1, quantity);
-                            
+
                         } else if (item == 5) {
                             check = false;
                         }
@@ -201,7 +206,41 @@ public class MakeOrder {
             System.out.println();
             System.out.println("The shop has received the money.\n The shop will deliver food as quickly as possible.");
         }
+        System.out.println("Would you like to give us to feedback");
+        System.out.println("1.Yes");
+        System.out.println("2.No");
+        int feed = scanner.nextInt();
+        if (feed == 1){
+            System.out.print("feedback : ");
+            FeedBack.feedback();
+        }
+
+
+        menuAll.add(menus);
+        totalAll.add(totalPrice);
+
+
 
     }
+
+    public static void displayMenuAndTotal() {
+        System.out.println("All Menus:");
+        for (Vector<Menu> menu : menuAll) {
+            System.out.print(menu);
+        }
+        System.out.println();
+        System.out.println("Total: " +calculateTotal()+ " Bath");
+
+    }
+    private static double calculateTotal() {
+        double total = 0;
+        for (Double price : totalAll) {
+            total += price;
+        }
+        return total;
+    }
+
+
+
 
 }

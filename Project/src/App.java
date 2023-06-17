@@ -1,3 +1,4 @@
+import Admin.FeedBack;
 import Reservation.*;
 import MakeOrder.*;
 import RegisLogin.*;
@@ -6,6 +7,11 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 import Admin.AdminAccess;
+
+import static Admin.FeedBack.displayfeedback;
+import static Admin.FeedBack.feedback;
+import static MakeOrder.MakeOrder.displayMenuAndTotal;
+
 
 public class App extends Table {
     public static void main(String args[]) throws ParseException {
@@ -45,13 +51,17 @@ public class App extends Table {
                         if (AdminAccess.checkPIN(PIN)) {// if true
                             System.out.println("\u001B[34m Welcome Admin \u001B[0m");
                             do {
-                                System.out.println("1.Show Member \n2.Show Reservation Table \n3.Exit");
+                                System.out.println("\n1.Show Member \n2.Show Reservation Table \n3.Order View \n4.Feedback \n5.Exit");
                                 int admin = scan.nextInt();
                                 if (admin == 1) {
                                     Member.showMember();
                                 } else if (admin == 2) {
                                     getTable();
-                                } else if (admin == 3) {
+                                }else if (admin == 3){
+                                    displayMenuAndTotal();
+                                }else if (admin == 4){
+                                    displayfeedback();
+                                }else if (admin == 5) {
                                     break;
                                 } else {
                                     System.out.println("Please choose something we have for you.");
