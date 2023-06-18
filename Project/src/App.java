@@ -1,5 +1,4 @@
 import Admin.AdminAccess;
-import Data.ReserveationList;
 import MakeOrder.MakeOrder;
 import MakeOrderFrontDesk.Menu;
 import Reservation.Reservation;
@@ -30,7 +29,6 @@ while(true) {
             System.out.println("3. Make Reservation");
             System.out.println("4. Admin Access");
             System.out.println("5. Logout");
-            System.out.println(user.getAddress(user.userInfo()));
             int choice = scan.nextInt();
 
             switch (choice) {

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 * but showMember similar to show all member list in readable form
 */
 public class Member {
-    private String  name,email, password, telNum,address;
+    private String name, email, password, telNum, address;
 
     LocalDate today = LocalDate.now();
     private int yearsOfMembership = today.getYear() - 2023; // assuming the program started in 2023
@@ -59,15 +59,13 @@ public class Member {
         return telNum;
     }
 
-    public  String getAddress(Member user) {
-        return members.get(members.indexOf(user)).address;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddress(Member user,String value) {
-        members.set(members.indexOf(user), new Member(user.name, user.email, user.password, user.telNum, value)) ;
-
+    public void setAddress(String address) {
+        this.address = address;
     }
-
 
     public String getRank() {
         if (getYearsOfMembership() == 0) {
@@ -107,13 +105,12 @@ public class Member {
         members.add(member);
     }
 
-    public static void showMember() {// Should be access only by Admin
-        int i = 0;
+    public static void showMember() {// Should be accessed only by Admin
         for (Member member : members) {
             System.out.println("Name: " + member.getName() + ", Email: " + member.getEmail() + ", TelNum: "
                     + member.getTelNum() +
-                    "Address: " + member.getAddress(members.get(i)) +", Years of Membership: " + member.getYearsOfMembership());
-            i++;
+                    ",Address: " + member.getAddress() + ", Years of Membership: "
+                    + member.getYearsOfMembership());
         }
     }
 

@@ -40,11 +40,12 @@ public class Login {
         Member.setAddress(address);
     }*/
 
-    public String getAddress(Member user) {
-        return member.getAddress(user);
+    public String getAddress() {
+        return member.getAddress();
     }
-    public void setAddress(Member user,String address) {
-        member.setAddress(user, address);
+
+    public void setAddress(String address) {
+        member.setAddress(address);
     }
 
     public Member userInfo(){
