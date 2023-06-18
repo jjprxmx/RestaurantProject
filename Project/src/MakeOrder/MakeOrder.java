@@ -23,17 +23,12 @@ public class MakeOrder {
     public static Vector<Integer> hourVector = new Vector<Integer>();
     public static Vector<Integer> minuteVector = new Vector<Integer>();
 
-
-
-
     public static void order(Login user) {
         Calendar calendar = Calendar.getInstance();
         Vector<Menu> menus = new Vector<>();
         Vector<Integer> dayV = new Vector<>();
         Vector<Integer> mountV = new Vector<>();
         Vector<Integer> yearV = new Vector<>();
-
-
 
         Noodle noodle = new Noodle();
         Rice rice = new Rice();
@@ -47,7 +42,7 @@ public class MakeOrder {
         boolean typee = true;
         int item;
         int quantity = 1;
-        //double totalPrice = 0;
+        // double totalPrice = 0;
         int day;
         int mount;
         int year;
@@ -176,39 +171,34 @@ public class MakeOrder {
         } while (checkMemu);
         scanner.nextLine();
         // กรอกที่อยู่ที่จะส่ง
-        if(user.getAddress(user.userInfo())!=null) {
-            System.out.println("Do you want to sent at " + user.getAddress(user.userInfo()) + "? if Yes press 1,No press 2");
+        if (user.getAddress() != null) {
+            System.out.println("Do you want to sent at " + user.getAddress() + "? if Yes press 1,No press 2");
             int defaultYN = scanner.nextInt();
 
             if (defaultYN == 1) {
                 // ดึงไปเก็บข้อมูลในอัลเรย์
-                addressVector.add(user.getAddress(user.userInfo()));//1
+                addressVector.add(user.getAddress());// 1
             }
             scanner.nextLine();
-             if (defaultYN == 2) {
-                 System.out.print("preem");
+            if (defaultYN == 2) {
                 System.out.println("Please fill in the address you want to ship to.");
                 String address = scanner.nextLine();
                 System.out.println("Want to set it as a default sending address? if Yes press 1,No press 2 ");
                 int defaultAddress = scanner.nextInt();
                 if (defaultAddress == 1) {
                     // ดึงไปเก็บข้อมูลในอัลเรย์
-                    user.setAddress(user.userInfo(),address);
+                    user.setAddress(address);
                 }
                 addressVector.add(address);
             }
-        }
-
-       if(user.getAddress(user.userInfo())==null) {
-           System.out.print("yung");
-           System.out.print("address = "+user.getAddress(user.userInfo()));
+        } else if (user.getAddress() == null) {
             System.out.println("Please fill in the address you want to ship to.");
             String address = scanner.nextLine();
             System.out.println("Want to set it as a default sending address? if Yes press 1,No press 2 ");
             int defaultAddress = scanner.nextInt();
             if (defaultAddress == 1) {
                 // ดึงไปเก็บข้อมูลในอัลเรย์
-                user.setAddress(user.userInfo(),address);
+                user.setAddress(address);
             }
             addressVector.add(address);
         }
@@ -226,13 +216,12 @@ public class MakeOrder {
                 year = scanner.nextInt();
                 // ดึง method checkTime มาใช้เช็ควัน
                 time.checkMenuDate(day, mount, year);
-                dayV.add(day);mountV.add(mount);yearV.add(year);
+                dayV.add(day);
+                mountV.add(mount);
+                yearV.add(year);
                 dayVector.add(day);
                 mountVector.add(mount);
                 yearVector.add(year);
-
-
-
 
             } while (time.checkDa);
         }
@@ -242,9 +231,6 @@ public class MakeOrder {
         dayVector.add(x);
         mountVector.add(y);
         yearVector.add(z);
-
-
-
 
         System.out.println("Want it sent immediately?? if Yes press 1,No press 2 ");
         int sentTime = scanner.nextInt();
@@ -265,8 +251,6 @@ public class MakeOrder {
         hourVector.add(hour);
         minuteVector.add(minute);
 
-
-
         // เลือกการชำระ
         System.out.println("Please select payment method");
         System.out.println("1.Cash");
@@ -285,7 +269,7 @@ public class MakeOrder {
         System.out.println("1.Yes");
         System.out.println("2.No");
         int feed = scanner.nextInt();
-        if (feed == 1){
+        if (feed == 1) {
             System.out.print("feedback : ");
             FeedBack.feedback();
         }
@@ -294,31 +278,26 @@ public class MakeOrder {
 
         userVector.add(user.getName());
 
-
-
     }
+
     public static void displayMenuAndTotal() {
         System.out.println("All menus");
         int i = 0;
         System.out.println("============================================");
         for (Vector<Menu> menu : mainVector) {
-            System.out.println("User: " +userVector.get(i));
-            System.out.println("Address : "+addressVector.get(i));
-            System.out.println("Date : "+dayVector.get(i)+"-"+mountVector.get(i)+"-"+yearVector.get(i));
-            System.out.printf("Time : %02d : %02d ", hourVector.get(i),minuteVector.get(i));
+            System.out.println("User: " + userVector.get(i));
+            System.out.println("Address : " + addressVector.get(i));
+            System.out.println("Date : " + dayVector.get(i) + "-" + mountVector.get(i) + "-" + yearVector.get(i));
+            System.out.printf("Time : %02d : %02d ", hourVector.get(i), minuteVector.get(i));
             System.out.println("\nBill");
-            for (Menu item : menu){
+            for (Menu item : menu) {
                 System.out.print(item);
             }
-            System.out.println("\nTotal: "+totalAll.get(i) +" Bath");
+            System.out.println("\nTotal: " + totalAll.get(i) + " Bath");
             i++;
             System.out.println("============================================");
 
         }
     }
-
-
-
-
 
 }
