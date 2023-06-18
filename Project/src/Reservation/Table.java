@@ -1,5 +1,7 @@
 package Reservation;
 
+import RegisLogin.Member;
+
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -10,6 +12,7 @@ public class Table {
     private int year;
     private int course;
     private int round;
+    private String user;
     private String chooseTable;
 
     public String roundTable[] = { "12.00 pm", "13.30 pm", "17.30 pm", "19.30 pm" };
@@ -19,7 +22,7 @@ public class Table {
     public Table() {
     };
 
-    public Table(int day, int mount, int year, int course, int round, int partySize) {
+    public Table(String user, int day, int mount, int year, int course, int round, int partySize) {
         // set ค่า
         this.day = day;
         this.mount = mount;
@@ -27,6 +30,7 @@ public class Table {
         this.partySize = partySize;
         this.course = course;
         this.round = round;
+        this.user = user;
         for (int i = 1; i <= 4; i++) {
             if (round == i) {
                 stRound = roundTable[i - 1];
@@ -139,7 +143,7 @@ public class Table {
 
     public String toString() {
         return String.format(
-                "username: preemSoCute Course:%s , Round: %s , Table: %s ,Party Size: %d , Date: %d / %d / %d ", course,
+                "username: %s Course:%s , Round: %s , Table: %s ,Party Size: %d , Date: %d / %d / %d ",user,course,
                 stRound, chooseTable, partySize, day, mount, year);
     }
     public static void getTable(){

@@ -1,5 +1,7 @@
 package Reservation;
 
+import RegisLogin.Member;
+
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -7,9 +9,8 @@ public class Reservation {
     public Table tablee = new Table();
 
 
-    public void makeReservation() {
+    public void makeReservation(String user) {
         Time time = new Time();
-
 
         int round=0;
         boolean chBook = true;
@@ -17,6 +18,7 @@ public class Reservation {
         int day;
         int mount;
         int year;
+
         Scanner scanner = new Scanner(System.in);
 
         do {
@@ -60,7 +62,7 @@ public class Reservation {
             }
             else {System.out.println("error");}
 
-            tablee.tables.add(new Table(day, mount, year, number, round, countPeople));
+            tablee.tables.add(new Table(user,day, mount, year, number, round, countPeople));
 
             System.out.println("Please check your reservation");
 

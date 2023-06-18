@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 public class Login {
     Scanner scanner = new Scanner(System.in);
-    Member member;
+   public static Member member;
 
     public boolean loginAt(String email, String password) {
 
@@ -36,11 +36,21 @@ public class Login {
         }
     }
 
-    public void setDefaultAddress(String address) {
+    /*public void setDefaultAddress(String address) {
         Member.setAddress(address);
+    }*/
+
+    public String getAddress(Member user) {
+        return member.getAddress(user);
+    }
+    public void setAddress(Member user,String address) {
+        member.setAddress(user, address);
     }
 
-    public String getAddress() {
-        return member.getAddress();
+    public Member userInfo(){
+        return member;
     }
+
+    public String getName(){return member.getName();}
+
 }

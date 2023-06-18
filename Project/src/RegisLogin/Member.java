@@ -9,9 +9,7 @@ import java.util.ArrayList;
 * but showMember similar to show all member list in readable form
 */
 public class Member {
-    private String name, email, password, telNum;
-
-    private static String address;
+    private String  name,email, password, telNum,address;
 
     LocalDate today = LocalDate.now();
     private int yearsOfMembership = today.getYear() - 2023; // assuming the program started in 2023
@@ -30,6 +28,7 @@ public class Member {
         members.add(new Member("Steven Miller", "steven.miller@example.com", "password666", "666", null));
         members.add(new Member("Amy Garcia", "amy.garcia@example.com", "password777", "777", null));
         members.add(new Member("p", "p", "p", "p", null));
+        members.add(new Member("c", "c", "c", "c", null));
     }
 
     public Member(String name, String email, String password, String telNum, String address) {
@@ -60,13 +59,15 @@ public class Member {
         return telNum;
     }
 
-    public String getAddress() {
-        return address;
+    public  String getAddress(Member user) {
+        return members.get(members.indexOf(user)).address;
     }
 
-    public static void setAddress(String address) {
-        Member.address = address;
+    public void setAddress(Member user,String value) {
+        members.set(members.indexOf(user), new Member(user.name, user.email, user.password, user.telNum, value)) ;
+
     }
+
 
     public String getRank() {
         if (getYearsOfMembership() == 0) {
@@ -107,9 +108,12 @@ public class Member {
     }
 
     public static void showMember() {// Should be access only by Admin
+        int i = 0;
         for (Member member : members) {
             System.out.println("Name: " + member.getName() + ", Email: " + member.getEmail() + ", TelNum: "
-                    + member.getTelNum() + ", Years of Membership: " + member.getYearsOfMembership());
+                    + member.getTelNum() +
+                    "Address: " + member.getAddress(members.get(i)) +", Years of Membership: " + member.getYearsOfMembership());
+            i++;
         }
     }
 
