@@ -5,21 +5,22 @@ public abstract class Menu {
     private int quantity;
     public double totalPrice;
 
-    public Menu(){
+    public Menu() {
     }
-    public Menu(String menu,int quantity){
-        this.menu=menu;
-        this.quantity=quantity;
+
+    public Menu(String menu, int quantity) {
+        this.menu = menu;
+        this.quantity = quantity;
     }
-    public abstract  void getMenu();
-    public double price(int num,int quantity){
+
+    public abstract void getMenu();
+
+    public double price(int num, int quantity) {
         return totalPrice;
     }
 
-
-    public String toString(){
-        return String.format("\n%s     %d piece  ",menu,quantity);
+    public String toString() {
+        return String.format("\n%s     %d piece  ", menu, quantity);
     }
-
 
 }
