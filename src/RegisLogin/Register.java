@@ -31,7 +31,7 @@ public class Register {
 
         if (!Member.checkMember(email)) {
             // Create new account
-            Member.add(new Member(Member.nowSize(),name, email, password, telNum, null));
+            Member.add(new Member(name, email, password, telNum, null));
             System.out.println("Member with email " + email + " has been added.");
             // Successful create new account
             System.out.println("\nSuccessfully create new account!");

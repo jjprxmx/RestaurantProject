@@ -22,8 +22,7 @@ public class App extends Table {
         Login user = new Login();
         Scanner scan = new Scanner(System.in);
 
-
-        while(true){
+        while (true) {
 
             do {
                 isUserLoggedOut = false;
@@ -38,8 +37,6 @@ public class App extends Table {
 
             } while (!isUserLoggedIn);
 
-
-
             do {
                 if (user != null) {
                     System.out.println("What would you like to do: ");
@@ -48,6 +45,8 @@ public class App extends Table {
                     System.out.println("3. Make Reservation");
                     System.out.println("4. Admin Access");
                     System.out.println("5. Logout");
+                    System.out.println("6. Exit");
+
                     int choice = scan.nextInt();
 
                     switch (choice) {
@@ -76,6 +75,9 @@ public class App extends Table {
                             isUserLoggedOut = true;
                             System.out.println("Logged out successfully.");
                             break;
+                        case 6:
+                            System.out.println("Exiting the program...");
+                            return; // Exit the program
                         default:
                             System.out.println("Please choose a valid option.");
                     }
@@ -94,7 +96,7 @@ public class App extends Table {
                                     Member.showMember();
                                     break;
                                 case 2:
-                                    for(int i = 0; i < Reservation.dataReservations.size(); i++){
+                                    for (int i = 0; i < Reservation.dataReservations.size(); i++) {
                                         System.out.println(Reservation.dataReservations.get(i));
                                     }
                                     break;

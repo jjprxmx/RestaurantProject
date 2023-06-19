@@ -63,7 +63,7 @@ public class MakeOrder {
         do {
             do {
                 System.out.println("Please select type of menu");
-                System.out.println("1.Noodle\n2.Rice\n3.Sashimi\n4.Sushi and Maki\n5.Promotion\n6.exit ");
+                System.out.println("1.Noodle\n2.Rice\n3.Sashimi\n4.Sushi and Maki\n5.exit ");
                 System.out.print("type: ");
                 int type = scanner.nextInt();
                 if (type == 1) {
@@ -143,7 +143,7 @@ public class MakeOrder {
 
                     } while (check);
                 }
-                if (type == 6) {
+                if (type == 5) {
                     typee = false;
                 }
 
@@ -271,7 +271,7 @@ public class MakeOrder {
         int feed = scanner.nextInt();
         if (feed == 1) {
             System.out.print("feedback : ");
-            FeedBack.feedback();
+            FeedBack.feedback(user);
         }
         totalAll.add(totalPrice);
         mainVector.add(menus);
