@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Register {
     Scanner scanner = new Scanner(System.in);
 
-    public Register() {
+    public void register() {
         System.out.print("Register section.");
         System.out.println("\nPlease enter your name:");
         String name = scanner.nextLine();

@@ -24,6 +24,7 @@ public class Login {
             if (y == 1) {
                 // User create new account
                 Register newUser = new Register();
+                newUser.register();
             }
             return false;
         } else {

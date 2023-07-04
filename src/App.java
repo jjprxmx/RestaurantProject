@@ -5,6 +5,7 @@ import Reservation.Reservation;
 import Reservation.Table;
 import RegisLogin.Login;
 import RegisLogin.Member;
+import RegisLogin.Register;
 
 import java.text.ParseException;
 import java.util.Scanner;
@@ -26,12 +27,22 @@ public class App extends Table {
 
             do {
                 isUserLoggedOut = false;
+                System.out.println("Welcome to our restaurant!");
+                System.out.println("1. Login");
+                System.out.println("2. Register");
+                int choice = scan.nextInt();
+
+                if (choice == 2) {
+                    Register newUser = new Register();
+                    newUser.register();
+                }
+
                 System.out.println("Welcome to the login section.");
                 System.out.println("Please enter your email:");
-                String email = scan.nextLine();
+                String email = scan.next();
 
                 System.out.println("Please enter your password:");
-                String password = scan.nextLine();
+                String password = scan.next();
 
                 isUserLoggedIn = user.loginAt(email, password);
 
